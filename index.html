@@ -90,15 +90,27 @@
     <!-- 注意書きなど <body onload="init()"> -->
     <p id="page"></p>
     <p id="audio"></p>
-    <p>スタイル変換の度合い: <br>
-      スタイル変換されていない
-      <label><input type="radio" name="eval1" onclick="evaluation()"></label>
-      <label><input type="radio" name="eval1" onclick="evaluation()"></label>
-      <label><input type="radio" name="eval1" onclick="evaluation()"></label>
-      <label><input type="radio" name="eval1" onclick="evaluation()"></label>
-      <label><input type="radio" name="eval1" onclick="evaluation()"></label>
-      スタイル変換されている
-    </p>
+    <table border="1">
+      <tr>
+        <th>スタイル変換の度合い</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>スタイル変換されていない</td>
+        <td><label><input type="radio" name="eval1" onclick="evaluation()"></label></td>
+        <td><label><input type="radio" name="eval1" onclick="evaluation()"></label></td>
+        <td><label><input type="radio" name="eval1" onclick="evaluation()"></label></td>
+        <td><label><input type="radio" name="eval1" onclick="evaluation()"></label></td>
+        <td><label><input type="radio" name="eval1" onclick="evaluation()"></label></td>
+        <td>スタイル変換されている</td>
+      </tr>
+    </table>
+
     <p>コンテンツ保存性: <br>
       <label><input type="radio" name="eval2" onclick="evaluation()">Excellent</label><br>
       <label><input type="radio" name="eval2" onclick="evaluation()">Good</label><br>

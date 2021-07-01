@@ -56,7 +56,9 @@ function start_experiment() {
   file_list = makeFileList()
   console.log(file_list);
   scores = (new Array(file_list.length)).fill(0);
-  eval = document.getElementsByName("eval");
+  eval1 = document.getElementsByName("eval1");
+  eval2 = document.getElementsByName("eval2");
+  eval3 = document.getElementsByName("eval3");
   init()
 
 }
@@ -210,4 +212,6 @@ var scores;
 
 // ローカルで行う場合はloadText()は動作しないため
 var n = 0;
-var eval = document.getElementsByName("eval");
+var eval1 = document.getElementsByName("eval1");
+var eval2 = document.getElementsByName("eval2");
+var eval3 = document.getElementsByName("eval3");

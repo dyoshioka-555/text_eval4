@@ -2,9 +2,9 @@ import os
 import shutil
 
 wav_root = "../wav/"
-METHOD = ["natural", "world", "nsf", "qppwg", "usfgan"]
+METHOD = ["origin", "cvae", "cvae_bow", "cvae2", "cvae_bow2"]
 SPK = ["bdl", "clb", "rms", "slt"]
-N_SET = 15
+N_SET = 5
 N_DATA_PER_SPK = 4
 
 for n_set in range(N_SET):

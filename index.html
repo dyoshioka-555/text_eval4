@@ -10,7 +10,7 @@
 <body>
 
   <!-- 注意書きなど -->
-  <div style="border:1px solid #000000; padding: 10px; border-radius: 0px; background: ##ffffff;">
+  <div style="border:1px solid #000000; padding: 10px; border-radius: 0px; background: #ffffff;">
     <p>
     <h1>Text style transfer Evaluation Test</h1>
 
@@ -25,7 +25,8 @@
       <li>Enter your name and select the set list number from 1 to 10.</li>
       <li>Press "Start Experiment" button.</li>
       <li>Read to the two text, original text and generated text, and give it the score you think it deserves.<br>
-        In this evaluation experiment, you will be asked to evaluate the generated text from three perspectives:"degree
+        In this evaluation experiment, you will be asked to evaluate the generated text from three
+        perspectives:<br>"degree
         of style transformation", "content preservation", and "fluency".</li>
       <li>Press "next" button and start next evaluation.</li>
       <li>When you finish this experiment, press "finish" button and download the result.<br>
@@ -45,7 +46,7 @@
         <li>名前を入力し、1から10までのセット番号を選んで下さい。</li>
         <li>"Start Experiment"を押して下さい。</li>
         <li>元テキストと生成テキストを読み、相応しいと思った評価を選択して下さい。<br>
-          本評価実験では、生成されたテキストについて、<b>「スタイル変換度合い」「コンテンツ保存性」「流暢性」</b>の3つの観点から評価をしてもらいます。</li>
+          本評価実験では、生成されたテキストについて、<br><b>「スタイル変換度合い」「コンテンツ保存性」「流暢性」</b>の<br>3つの観点から評価をしてもらいます。</li>
         <li>選択を終えたら"next"ボタンを押し、次の実験に進んで下さい。</li>
         <li>評価実験を全て終えたら"finish"ボタンを押して結果をダウンロードして下さい。<br>
           結果はSlackか下記のメールアドレスに送信して下さい。</li>
@@ -89,12 +90,26 @@
     <!-- 注意書きなど <body onload="init()"> -->
     <p id="page"></p>
     <p id="audio"></p>
-    <p>
-      <label><input type="radio" name="eval" onclick="evaluation()">Excellent</label><br>
-      <label><input type="radio" name="eval" onclick="evaluation()">Good</label><br>
-      <label><input type="radio" name="eval" onclick="evaluation()">Fair</label><br>
-      <label><input type="radio" name="eval" onclick="evaluation()">Poor</label><br>
-      <label><input type="radio" name="eval" onclick="evaluation()">Bad</label><br>
+    <p>スタイル変換の度合い: <br>
+      <label><input type="radio" name="eval1" onclick="evaluation()">Excellent</label><br>
+      <label><input type="radio" name="eval1" onclick="evaluation()">Good</label><br>
+      <label><input type="radio" name="eval1" onclick="evaluation()">Fair</label><br>
+      <label><input type="radio" name="eval1" onclick="evaluation()">Poor</label><br>
+      <label><input type="radio" name="eval1" onclick="evaluation()">Bad</label><br>
+    </p>
+    <p>コンテンツ保存性: <br>
+      <label><input type="radio" name="eval2" onclick="evaluation()">Excellent</label><br>
+      <label><input type="radio" name="eval2" onclick="evaluation()">Good</label><br>
+      <label><input type="radio" name="eval2" onclick="evaluation()">Fair</label><br>
+      <label><input type="radio" name="eval2" onclick="evaluation()">Poor</label><br>
+      <label><input type="radio" name="eval2" onclick="evaluation()">Bad</label><br>
+    </p>
+    <p>流暢性: <br>
+      <label><input type="radio" name="eval3" onclick="evaluation()">Excellent</label><br>
+      <label><input type="radio" name="eval3" onclick="evaluation()">Good</label><br>
+      <label><input type="radio" name="eval3" onclick="evaluation()">Fair</label><br>
+      <label><input type="radio" name="eval3" onclick="evaluation()">Poor</label><br>
+      <label><input type="radio" name="eval3" onclick="evaluation()">Bad</label><br>
     </p>
 
     <p>

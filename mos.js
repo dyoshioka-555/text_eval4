@@ -42,12 +42,12 @@ function start_experiment() {
   Display()
 
   // read filepath
-  var natural_list = wav_dir + "set" + set_num + "/natural.list";
-  var method1_list = wav_dir + "set" + set_num + "/world.list";
-  var method2_list = wav_dir + "set" + set_num + "/nsf.list";
-  var method3_list = wav_dir + "set" + set_num + "/qppwg.list";
-  var method4_list = wav_dir + "set" + set_num + "/usfgan.list";
-  natural = loadText(natural_list);
+  var origin_list = wav_dir + "set" + set_num + "/origin.list";
+  var method1_list = wav_dir + "set" + set_num + "/cvae.list";
+  var method2_list = wav_dir + "set" + set_num + "/cvae_bow.list";
+  var method3_list = wav_dir + "set" + set_num + "/cvae2.list";
+  var method4_list = wav_dir + "set" + set_num + "/cvae_bow2.list";
+  origin = loadText(origin_list);
   method1 = loadText(method1_list);
   method2 = loadText(method2_list);
   method3 = loadText(method3_list);
@@ -80,7 +80,7 @@ function loadText(filename) {
 
 // make file list
 function makeFileList() {
-  var files = natural;
+  var files = origin;
   files = files.concat(method1, method2, method3, method4)
   files.shuffle();
   return files;
@@ -199,7 +199,7 @@ const wav_dir = "wav/";
 // invalid enter key
 document.onkeypress = invalid_enter();
 
-var natural;
+var origin;
 var method1;
 var method2;
 var method3;

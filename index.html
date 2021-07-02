@@ -89,43 +89,44 @@
   <div id="Display2" style="display:none;">
     <!-- 注意書きなど <body onload="init()"> -->
     <p id="page"></p>
-    <p id="audio"></p>
+    <p>元テキスト</p>
+    <p id="text"></p>
     <p>
     <table border="1">
       <tr>
-        <th>スタイル変換の度合い</th>
+        <th>↓</th>
         <th>1</th>
         <th>2</th>
         <th>3</th>
         <th>4</th>
         <th>5</th>
-        <th></th>
+        <th>↑</th>
       </tr>
       <tr>
         <td>スタイル変換されていない</td>
-        <td><label><input type="radio" name="eval1" onclick="evaluation()"></label></td>
-        <td><label><input type="radio" name="eval1" onclick="evaluation()"></label></td>
-        <td><label><input type="radio" name="eval1" onclick="evaluation()"></label></td>
-        <td><label><input type="radio" name="eval1" onclick="evaluation()"></label></td>
-        <td><label><input type="radio" name="eval1" onclick="evaluation()"></label></td>
+        <td><label><input type="radio" name="eval1" onclick="evaluation(1)"></label></td>
+        <td><label><input type="radio" name="eval1" onclick="evaluation(1)"></label></td>
+        <td><label><input type="radio" name="eval1" onclick="evaluation(1)"></label></td>
+        <td><label><input type="radio" name="eval1" onclick="evaluation(1)"></label></td>
+        <td><label><input type="radio" name="eval1" onclick="evaluation(1)"></label></td>
         <td>スタイル変換されている</td>
       </tr>
     </table>
     </p>
 
     <p>コンテンツ保存性: <br>
-      <label><input type="radio" name="eval2" onclick="evaluation()">Excellent</label><br>
-      <label><input type="radio" name="eval2" onclick="evaluation()">Good</label><br>
-      <label><input type="radio" name="eval2" onclick="evaluation()">Fair</label><br>
-      <label><input type="radio" name="eval2" onclick="evaluation()">Poor</label><br>
-      <label><input type="radio" name="eval2" onclick="evaluation()">Bad</label><br>
+      <label><input type="radio" name="eval2" onclick="evaluation(2)">Excellent</label><br>
+      <label><input type="radio" name="eval2" onclick="evaluation(2)">Good</label><br>
+      <label><input type="radio" name="eval2" onclick="evaluation(2)">Fair</label><br>
+      <label><input type="radio" name="eval2" onclick="evaluation(2)">Poor</label><br>
+      <label><input type="radio" name="eval2" onclick="evaluation(2)">Bad</label><br>
     </p>
     <p>流暢性: <br>
-      <label><input type="radio" name="eval3" onclick="evaluation()">Excellent</label><br>
-      <label><input type="radio" name="eval3" onclick="evaluation()">Good</label><br>
-      <label><input type="radio" name="eval3" onclick="evaluation()">Fair</label><br>
-      <label><input type="radio" name="eval3" onclick="evaluation()">Poor</label><br>
-      <label><input type="radio" name="eval3" onclick="evaluation()">Bad</label><br>
+      <label><input type="radio" name="eval3" onclick="evaluation(3)">Excellent</label><br>
+      <label><input type="radio" name="eval3" onclick="evaluation(3)">Good</label><br>
+      <label><input type="radio" name="eval3" onclick="evaluation(3)">Fair</label><br>
+      <label><input type="radio" name="eval3" onclick="evaluation(3)">Poor</label><br>
+      <label><input type="radio" name="eval3" onclick="evaluation(3)">Bad</label><br>
     </p>
 
     <p>

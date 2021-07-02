@@ -84,8 +84,26 @@ function loadText(filename) {
 
 // make file list
 function makeTextList() {
-  var texts = origin;
-  texts = texts.concat(method1, method2);//, method3, method4
+  var m1_id_text = {};
+  var m1_texts = [];
+  for (i = 0; i < origin.length; i++) {
+    m1_id_text.id = i;
+    m1_id_text.method = "cvae";
+    m1_id_text.ori_text = origin[i];
+    m1_id_text.tra_text = method1[i];
+    m1_texts.push(m1_id_text);
+  }
+  var m2_id_text = {};
+  var m2_texts = [];
+  for (i = 0; i < origin.length; i++) {
+    m2_id_text.id = i;
+    m1_id_text.method = "cvae+bow";
+    m2_id_text.ori_text = origin[i];
+    m2_id_text.tra_text = method2[i];
+    m2_texts.push(m2_id_text);
+  }
+  var texts = [];
+  texts = m1_texts.concat(method2);//, method3, method4
   texts.shuffle();
   return texts;
 }
@@ -93,7 +111,8 @@ function makeTextList() {
 function SetText() {
   document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length;
 
-  document.getElementById("text").innerHTML = text_list[n];
+  document.getElementById("ori_text").innerHTML = text_list[n]["ori_text"];
+  document.getElementById("tra_text").innerHTML = text_list[n]["tra_text"];
 }
 
 function init() {
@@ -218,7 +237,8 @@ function evaluation(k) {
 function exportCSV() {
   var csvData = "";
   for (var i = 0; i < text_list.length; i++) {
-    csvData += "" + text_list[i] + ","
+    csvData += "" + text_list[i]["method"] + "_"
+      + text_list[i]["id"] + ","
       + scores1[i] + ","
       + scores2[i] + ","
       + scores3[i] + "\r\n";

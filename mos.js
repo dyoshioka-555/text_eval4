@@ -90,7 +90,7 @@ function makeTextList() {
   return texts;
 }
 
-function setText() {
+function SetText() {
   document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length;
 
   document.getElementById("text").innerHTML = text_list[n];

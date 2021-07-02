@@ -99,7 +99,6 @@ function makeTextList() {
 
 function SetText() {
   document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length;
-
   document.getElementById("ori_text").innerHTML = text_list[n]["ori_text"];
   document.getElementById("tra_text").innerHTML = text_list[n]["tra_text"];
 }

@@ -39,7 +39,7 @@ function start_experiment() {
   }
 
   // convert display
-  Display()
+  Display();
 
   // read filepath
   var origin_list = text_dir + "set" + set_num + "/origin.list";
@@ -53,7 +53,7 @@ function start_experiment() {
   //method3 = loadText(method3_list);
   //method4 = loadText(method4_list);
   outfile = name + "_set" + set_num + ".csv";
-  text_list = makeTextList()
+  text_list = makeTextList();
   console.log(text_list);
   scores1 = (new Array(text_list.length)).fill(0);
   scores2 = (new Array(text_list.length)).fill(0);
@@ -77,7 +77,7 @@ function loadText(filename) {
   xhr.open("GET", filename, false);
   xhr.send(null);
   var list = xhr.responseText.split(/\r\n|\r|\n/);
-  list.pop()
+  list.pop();
 
   return list;
 }
@@ -85,7 +85,7 @@ function loadText(filename) {
 // make file list
 function makeTextList() {
   var texts = origin;
-  texts = texts.concat(method1, method2)//, method3, method4
+  texts = texts.concat(method1, method2);//, method3, method4
   texts.shuffle();
   return texts;
 }
@@ -260,6 +260,7 @@ function finish() {
 
 // directory name
 const text_dir = "texts/";
+var keyCode = false;
 
 // invalid enter key
 document.onkeypress = invalid_enter();

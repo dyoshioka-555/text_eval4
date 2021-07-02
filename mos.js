@@ -84,24 +84,13 @@ function loadText(filename) {
 
 // make file list
 function makeTextList() {
-  var m1_id_text = {};
   var m1_texts = [];
-  for (i = 0; i < origin.length; i++) {
-    m1_id_text.id = i;
-    m1_id_text.method = "cvae";
-    m1_id_text.ori_text = origin[i];
-    m1_id_text.tra_text = method1[i];
-    m1_texts.push(m1_id_text);
-  }
-  var m2_id_text = {};
   var m2_texts = [];
   for (i = 0; i < origin.length; i++) {
-    m2_id_text.id = i;
-    m2_id_text.method = "cvae+bow";
-    m2_id_text.ori_text = origin[i];
-    m2_id_text.tra_text = method2[i];
-    m2_texts.push(m2_id_text);
+    m1_texts.push({ "id": i, "method": "cvae", "ori_text": origin[i], "tra_text": method1[i] });
+    m2_texts.push({ "id": i, "method": "cvae+bow", "ori_text": origin[i], "tra_text": method2[i] });
   }
+
   var texts = [];
   texts = m1_texts.concat(m2_texts);//, method3, method4
   texts.shuffle();

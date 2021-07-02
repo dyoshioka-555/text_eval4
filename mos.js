@@ -85,7 +85,7 @@ function loadText(filename) {
 // make file list
 function makeTextList() {
   var texts = origin;
-  texts = texts.concat(method1, method2, method3, method4)
+  texts = texts.concat(method1, method2)//, method3, method4
   texts.shuffle();
   return texts;
 }

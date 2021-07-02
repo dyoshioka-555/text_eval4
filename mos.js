@@ -145,7 +145,7 @@ function setButton() {
     document.getElementById("prev").disabled = false;
     document.getElementById("next2").disabled = true;
     document.getElementById("finish").disabled = true;
-    for (var i = 0; i < eval.length; i++) {
+    for (var i = 0; i < eval1.length; i++) {
       if (eval1[i].checked) {
         finish_flag += 1;
       }
@@ -155,7 +155,7 @@ function setButton() {
       if (eval3[i].checked) {
         finish_flag += 1;
       }
-      if (finish_flag == 3) {
+      if (finish_flag <= 3) {
         document.getElementById("finish").disabled = false;
         break;
       }
@@ -171,7 +171,7 @@ function setButton() {
     }
     document.getElementById("next2").disabled = true;
     document.getElementById("finish").disabled = true;
-    for (var i = 0; i < eval.length; i++) {
+    for (var i = 0; i < eval1.length; i++) {
       if (eval1[i].checked) {
         next_flag += 1;
       }
@@ -181,7 +181,7 @@ function setButton() {
       if (eval3[i].checked) {
         next_flag += 1;
       }
-      if (next_flag == 3) {
+      if (next_flag <= 3) {
         document.getElementById("next2").disabled = false;
         break;
       }

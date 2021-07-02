@@ -97,13 +97,13 @@ function makeTextList() {
   var m2_texts = [];
   for (i = 0; i < origin.length; i++) {
     m2_id_text.id = i;
-    m1_id_text.method = "cvae+bow";
+    m2_id_text.method = "cvae+bow";
     m2_id_text.ori_text = origin[i];
     m2_id_text.tra_text = method2[i];
     m2_texts.push(m2_id_text);
   }
   var texts = [];
-  texts = m1_texts.concat(method2);//, method3, method4
+  texts = m1_texts.concat(m2_texts);//, method3, method4
   texts.shuffle();
   return texts;
 }

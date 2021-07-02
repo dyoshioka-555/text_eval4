@@ -206,7 +206,7 @@ function evaluation(k) {
         }
         break;
       case 3:
-        if (eval1[i].checked) {
+        if (eval3[i].checked) {
           scores3[n] = i + 1;
         }
         break;

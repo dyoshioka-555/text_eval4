@@ -107,25 +107,36 @@ function init() {
 
 function evalCheck1() {
   const c = scores1[n];
-  for (var i = 0; i < eval1.length; i++) {
-    eval1[i].checked = false;
+  if ((c <= 0) || (c > eval1.length)) {
+    for (var i = 0; i < eval1.length; i++) {
+      eval1[i].checked = false;
+    }
   }
-  eval1[c - 1].checked = true;
-
+  else {
+    eval1[c - 1].checked = true;
+  }
 }
 function evalCheck2() {
   const c = scores2[n];
-  for (var i = 0; i < eval2.length; i++) {
-    eval2[i].checked = false;
+  if ((c <= 0) || (c > eval2.length)) {
+    for (var i = 0; i < eval2.length; i++) {
+      eval2[i].checked = false;
+    }
   }
-  eval2[c - 1].checked = true;
+  else {
+    eval2[c - 1].checked = true;
+  }
 }
 function evalCheck3() {
   const c = scores3[n];
-  for (var i = 0; i < eval3.length; i++) {
-    eval3[i].checked = false;
+  if ((c <= 0) || (c > eval3.length)) {
+    for (var i = 0; i < eval3.length; i++) {
+      eval3[i].checked = false;
+    }
   }
-  eval3[c - 1].checked = true;
+  else {
+    eval3[c - 1].checked = true;
+  }
 }
 
 function setButton() {

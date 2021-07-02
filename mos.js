@@ -107,36 +107,25 @@ function init() {
 
 function evalCheck1() {
   const c = scores1[n];
-  if ((c <= 0) || (c > eval1.length)) {
-    for (var i = 0; i < eval1.length; i++) {
-      eval1[i].checked = false;
-    }
+  for (var i = 0; i < eval1.length; i++) {
+    eval1[i].checked = false;
   }
-  else {
-    eval1[c - 1].checked = true;
-  }
+  eval1[c - 1].checked = true;
+
 }
 function evalCheck2() {
   const c = scores2[n];
-  if ((c <= 0) || (c > eval2.length)) {
-    for (var i = 0; i < eval2.length; i++) {
-      eval2[i].checked = false;
-    }
+  for (var i = 0; i < eval2.length; i++) {
+    eval2[i].checked = false;
   }
-  else {
-    eval2[c - 1].checked = true;
-  }
+  eval2[c - 1].checked = true;
 }
 function evalCheck3() {
   const c = scores3[n];
-  if ((c <= 0) || (c > eval3.length)) {
-    for (var i = 0; i < eval3.length; i++) {
-      eval3[i].checked = false;
-    }
+  for (var i = 0; i < eval3.length; i++) {
+    eval3[i].checked = false;
   }
-  else {
-    eval3[c - 1].checked = true;
-  }
+  eval3[c - 1].checked = true;
 }
 
 function setButton() {
@@ -197,17 +186,17 @@ function evaluation(k) {
     switch (k) {
       case 1:
         if (eval1[i].checked) {
-          scores1[n] = i;
+          scores1[n] = i + 1;
         }
         break;
       case 2:
         if (eval2[i].checked) {
-          scores2[n] = i;
+          scores2[n] = i + 1;
         }
         break;
       case 3:
         if (eval1[i].checked) {
-          scores3[n] = i;
+          scores3[n] = i + 1;
         }
         break;
     }

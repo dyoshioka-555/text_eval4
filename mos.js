@@ -87,9 +87,16 @@ function makeTextList() {
   var m1_texts = [];
   var m2_texts = [];
   for (i = 0; i < origin.length; i++) {
-    m1_texts.push({ "id": i, "method": "cvae", "ori_text": origin[i], "tra_text": method1[i] });
-    m2_texts.push({ "id": i, "method": "cvae+bow", "ori_text": origin[i], "tra_text": method2[i] });
+    if (i < 25) {
+      m1_texts.push({ "id": i, "direction": 0, "method": "cvae", "ori_text": origin[i], "tra_text": method1[i] });
+      m2_texts.push({ "id": i, "direction": 0, "method": "cvae+bow", "ori_text": origin[i], "tra_text": method2[i] });
+    } else {
+      m1_texts.push({ "id": i, "direction": 1, "method": "cvae", "ori_text": origin[i], "tra_text": method1[i] });
+      m2_texts.push({ "id": i, "direction": 1, "method": "cvae+bow", "ori_text": origin[i], "tra_text": method2[i] });
+    }
   }
+
+
 
   var texts = [];
   texts = m1_texts.concat(m2_texts);//, method3, method4
@@ -98,7 +105,12 @@ function makeTextList() {
 }
 
 function SetText() {
-  document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length;
+  if (text_list[n]["direction"] == 0) {
+    document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length + "フィラー・言い淀みなし→あり";
+  } else {
+    document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length + "フィラー・言い淀みなし→あり";
+  }
+
   document.getElementById("ori_text").innerHTML = text_list[n]["ori_text"];
   document.getElementById("tra_text").innerHTML = text_list[n]["tra_text"];
 }
@@ -226,7 +238,7 @@ function exportCSV() {
   var csvData = "";
   for (var i = 0; i < text_list.length; i++) {
     csvData += "" + text_list[i]["method"] + "_"
-      + text_list[i]["id"] + ","
+      + ('00' + text_list[i]["id"]).slice(-2) + ","
       + scores1[i] + ","
       + scores2[i] + ","
       + scores3[i] + "\r\n";

@@ -43,4 +43,7 @@ for n_set in range(N_SET):
 
         with open(f"texts/set{n_set + 1}/{method}.list", mode="w") as f:
             for text in texts:
-                f.write(text)
+                if method == "origin":
+                    f.write(text + "\n")
+                else:
+                    f.write(text)

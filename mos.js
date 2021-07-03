@@ -106,9 +106,9 @@ function makeTextList() {
 
 function SetText() {
   if (text_list[n]["direction"] == 0) {
-    document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length + "フィラー・言い淀みなし→あり";
+    document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length + "\nフィラー・言い淀み: なし→あり";
   } else {
-    document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length + "フィラー・言い淀みなし→あり";
+    document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length + "\nフィラー・言い淀み: あり→なし";
   }
 
   document.getElementById("ori_text").innerHTML = text_list[n]["ori_text"];

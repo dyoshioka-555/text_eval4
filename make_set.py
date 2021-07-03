@@ -1,34 +1,46 @@
 import os
-import shutil
+import random
 
-wav_root = "../wav/"
-METHOD = ["origin", "cvae", "cvae_bow", "cvae2", "cvae_bow2"]
-SPK = ["bdl", "clb", "rms", "slt"]
-N_SET = 5
-N_DATA_PER_SPK = 4
+root = "../texts/"
+METHOD = ["origin", "cvae", "cvae_bow"]
+N_SET = 4
+random.seed(0)
+text_lists = {}
+
+for split in METHOD:
+    with open(root + split + ".txt", "r") as f:
+        texts0 = []
+        texts1 = []
+        for sent in f.readlines():
+            if not int(sent.split("\t")[0]):
+                texts0.append(sent.split("\t")[1].replace(" ", ""))
+            if int(sent.split("\t")[0]):
+                texts1.append(sent.split("\t")[1].replace(" ", ""))
+    text_lists[split] = {0: texts0, 1: texts1}
+
+print(len(text_lists["origin"][0]))
+print(len(text_lists["origin"][1]))
+rand_num0 = random.sample(range(len(text_lists["origin"][0])), 100)
+rand_num0.sort()
+print(rand_num0)
+rand_num1 = random.sample(range(len(text_lists["origin"][1])), 100)
+rand_num1.sort()
+
+for split in METHOD:
+    text0 = [text_lists[split][0][i] for i in rand_num0]
+    text1 = [text_lists[split][1][i] for i in rand_num1]
+    text_lists[split] = {0: text0, 1: text1}
+    print(text_lists[split][0])
 
 for n_set in range(N_SET):
     file_paths = []
     for method in METHOD:
-        os.makedirs(f"wav/set{n_set + 1}/{method}", exist_ok=True)
-        files = []
-        for spk in SPK:
-            for n_data in range(N_DATA_PER_SPK):
-                data_number = n_set * N_DATA_PER_SPK + n_data + 474
-                file_path = f"{method}/{spk}_arctic_b{data_number:0>4}.wav"
-                new_file_path = shutil.copyfile(
-                    wav_root + file_path, f"wav/set{n_set + 1}/" + file_path
-                )
-                files += [new_file_path]
-                if method != "natural":
-                    for scale in [2.00, 0.50]:
-                        file_path = (
-                            f"{method}/{spk}_arctic_b{data_number:0>4}_f{scale:.2f}.wav"
-                        )
-                        new_file_path = shutil.copyfile(
-                            wav_root + file_path, f"wav/set{n_set + 1}/" + file_path
-                        )
-                        files += [new_file_path]
-        with open(f"wav/set{n_set + 1}/{method}.list", mode="w") as f:
-            for file_path in sorted(files):
-                f.write(file_path + "\n")
+        os.makedirs(f"texts/set{n_set + 1}", exist_ok=True)
+        texts = [text_lists[split][0][(i + 1) * (n_set + 1) - 1] for i in range(25)]
+        texts.extend(
+            [text_lists[split][1][(i + 1) * (n_set + 1) - 1] for i in range(25)]
+        )
+
+        with open(f"texts/set{n_set + 1}/{method}.list", mode="w") as f:
+            for text in texts:
+                f.write(text)

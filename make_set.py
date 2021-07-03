@@ -4,7 +4,7 @@ import random
 root = "../texts/"
 METHOD = ["origin", "cvae", "cvae_bow"]
 N_SET = 4
-random.seed(0)
+random.seed(1)
 
 text_lists = {}
 for method in METHOD:
@@ -13,9 +13,9 @@ for method in METHOD:
         texts1 = []
         for sent in f.readlines():
             if not int(sent.split("\t")[0]):
-                texts0.append(sent.split("\t")[1].replace(" ", ""))
+                texts0.append(sent.split("\t")[1].strip().replace(" ", ""))
             if int(sent.split("\t")[0]):
-                texts1.append(sent.split("\t")[1].replace(" ", ""))
+                texts1.append(sent.split("\t")[1].strip().replace(" ", ""))
     text_lists[method] = {0: texts0, 1: texts1}
 
 # print(len(text_lists["origin"][0]))
@@ -44,7 +44,4 @@ for n_set in range(N_SET):
 
         with open(f"texts/set{n_set + 1}/{method}.list", mode="w") as f:
             for text in texts:
-                if method == "origin":
-                    f.write(text + "\n")
-                else:
-                    f.write(text)
+                f.write(text + "\n")

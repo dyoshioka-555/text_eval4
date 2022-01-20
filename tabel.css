@@ -16,7 +16,7 @@ table.b {
    table-layout: fixed;     /* 固定レイアウト */
    border-collapse: collapse;
    border: 2px solid green;   /* 外枠：2px,実線,緑色 */
-   width: 550px;              /* 表の横幅：350ピクセル */
+   width: 650px;              /* 表の横幅：350ピクセル */
 }
 table.b th {
    border: 2px solid green; /* 表内側の線：1px,実線,緑色 */

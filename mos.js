@@ -90,11 +90,11 @@ function makeTextList() {
     if (i < 10) {
       m1_texts.push({ "id": i, "direction": 0, "method": "cvae+attn", "ori_text": origin[i], "tra_text": method1[i] });
       m2_texts.push({ "id": i, "direction": 0, "method": "cvae+bow", "ori_text": origin[i], "tra_text": method2[i] });
-      m2_texts.push({ "id": i, "direction": 0, "method": "cvae", "ori_text": origin[i], "tra_text": method3[i] });
+      m3_texts.push({ "id": i, "direction": 0, "method": "cvae", "ori_text": origin[i], "tra_text": method3[i] });
     } else {
       m1_texts.push({ "id": i, "direction": 1, "method": "cvae+attn", "ori_text": origin[i], "tra_text": method1[i] });
       m2_texts.push({ "id": i, "direction": 1, "method": "cvae+bow", "ori_text": origin[i], "tra_text": method2[i] });
-      m2_texts.push({ "id": i, "direction": 1, "method": "cvae", "ori_text": origin[i], "tra_text": method3[i] });
+      m3_texts.push({ "id": i, "direction": 1, "method": "cvae", "ori_text": origin[i], "tra_text": method3[i] });
     }
   }
 
@@ -109,9 +109,9 @@ function makeTextList() {
 function SetText() {
   document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length;
   if (text_list[n]["direction"] == 0) {
-    document.getElementById("direction").textContent = "\n標準語 → 関西弁";
+    document.getElementById("direction").textContent = "\言い淀みなし → あり";
   } else {
-    document.getElementById("direction").textContent = "\n関西弁 → 標準語";
+    document.getElementById("direction").textContent = "\n言い淀みあり → なし";
   }
 
   document.getElementById("ori_text").innerHTML = text_list[n]["ori_text"];
@@ -302,7 +302,7 @@ document.onkeypress = invalid_enter();
 var origin;
 var method1;
 var method2;
-//var method3;
+var method3;
 //var method4;
 var outfile;
 var text_list;

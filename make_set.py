@@ -3,7 +3,7 @@ import random
 
 root = "texts/"
 METHOD = ["origin", "cvae", "cvae_bow", "cvae_attn"]
-N_SET = 8
+N_SET = 10
 random.seed(2)
 
 text_lists = {}

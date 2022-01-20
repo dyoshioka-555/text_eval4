@@ -86,6 +86,7 @@ function loadText(filename) {
 function makeTextList() {
   var m1_texts = [];
   var m2_texts = [];
+  var m3_texts = [];
   for (i = 0; i < origin.length; i++) {
     if (i < 10) {
       m1_texts.push({ "id": i, "direction": 0, "method": "cvae+attn", "ori_text": origin[i], "tra_text": method1[i] });

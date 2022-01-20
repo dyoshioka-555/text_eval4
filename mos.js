@@ -101,7 +101,8 @@ function makeTextList() {
 
 
   var texts = [];
-  texts = m1_texts.concat(m2_texts).concat(m3_texts);//, method4
+  t = m1_texts.concat(m2_texts);
+  texts = t.concat(m3_texts);//, method4
   texts.shuffle();
   return texts;
 }

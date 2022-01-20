@@ -3,8 +3,8 @@ import random
 
 root = "texts/"
 METHOD = ["origin", "cvae", "cvae_bow", "cvae_attn"]
-N_SET = 10
-random.seed(2)
+N_SET = 5
+random.seed(0)
 
 text_lists = {}
 for method in METHOD:
@@ -26,17 +26,17 @@ for method in METHOD:
 
 # print(len(text_lists["origin"][0]))
 # print(len(text_lists["origin"][1]))
-rand_num0 = random.sample(range(len(text_lists["origin"][0])), 100)
+rand_num0 = random.sample(range(len(text_lists["origin"][0])), 50)
 rand_num0.sort()
 # print(rand_num0)
-rand_num1 = random.sample(range(len(text_lists["origin"][1])), 100)
+rand_num1 = random.sample(range(len(text_lists["origin"][1])), 50)
 rand_num1.sort()
 
 for method in METHOD:
     text0 = [text_lists[method][0][i] for i in rand_num0]
     text1 = [text_lists[method][1][i] for i in rand_num1]
     text_lists[method] = {0: text0, 1: text1}
-    print(text_lists[method][0])
+    #print(text_lists[method][0])
 
 for n_set in range(N_SET):
     file_paths = []

@@ -43,14 +43,14 @@ function start_experiment() {
 
   // read filepath
   var origin_list = text_dir + "set" + set_num + "/origin.list";
-  var method1_list = text_dir + "set" + set_num + "/cvae.list";
+  var method1_list = text_dir + "set" + set_num + "/cvae_attn.list";
   var method2_list = text_dir + "set" + set_num + "/cvae_bow.list";
-  //var method3_list = text_dir + "set" + set_num + "/cvae2.list";
+  var method3_list = text_dir + "set" + set_num + "/cvae.list";
   //var method4_list = text_dir + "set" + set_num + "/cvae_bow2.list";
   origin = loadText(origin_list);
   method1 = loadText(method1_list);
   method2 = loadText(method2_list);
-  //method3 = loadText(method3_list);
+  method3 = loadText(method3_list);
   //method4 = loadText(method4_list);
   outfile = name + "_set" + set_num + ".csv";
   text_list = makeTextList();
@@ -87,19 +87,21 @@ function makeTextList() {
   var m1_texts = [];
   var m2_texts = [];
   for (i = 0; i < origin.length; i++) {
-    if (i < 25) {
-      m1_texts.push({ "id": i, "direction": 0, "method": "cvae", "ori_text": origin[i], "tra_text": method1[i] });
+    if (i < 10) {
+      m1_texts.push({ "id": i, "direction": 0, "method": "cvae+attn", "ori_text": origin[i], "tra_text": method1[i] });
       m2_texts.push({ "id": i, "direction": 0, "method": "cvae+bow", "ori_text": origin[i], "tra_text": method2[i] });
+      m2_texts.push({ "id": i, "direction": 0, "method": "cvae", "ori_text": origin[i], "tra_text": method3[i] });
     } else {
-      m1_texts.push({ "id": i, "direction": 1, "method": "cvae", "ori_text": origin[i], "tra_text": method1[i] });
+      m1_texts.push({ "id": i, "direction": 1, "method": "cvae+attn", "ori_text": origin[i], "tra_text": method1[i] });
       m2_texts.push({ "id": i, "direction": 1, "method": "cvae+bow", "ori_text": origin[i], "tra_text": method2[i] });
+      m2_texts.push({ "id": i, "direction": 1, "method": "cvae", "ori_text": origin[i], "tra_text": method3[i] });
     }
   }
 
 
 
   var texts = [];
-  texts = m1_texts.concat(m2_texts);//, method3, method4
+  texts = m1_texts.concat(m2_texts).concat(m3_texts);//, method4
   texts.shuffle();
   return texts;
 }
@@ -107,9 +109,9 @@ function makeTextList() {
 function SetText() {
   document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length;
   if (text_list[n]["direction"] == 0) {
-    document.getElementById("direction").textContent = "\nフィラー・言い淀み: なし→あり";
+    document.getElementById("direction").textContent = "\n標準語 → 関西弁";
   } else {
-    document.getElementById("direction").textContent = "\nフィラー・言い淀み: あり→なし";
+    document.getElementById("direction").textContent = "\n関西弁 → 標準語";
   }
 
   document.getElementById("ori_text").innerHTML = text_list[n]["ori_text"];
@@ -170,6 +172,8 @@ function setButton() {
       if (eval1[i].checked) {
         finish_flag += 1;
       }
+    }
+    for (var i = 0; i < eval2.length; i++) {
       if (eval2[i].checked) {
         finish_flag += 1;
       }
@@ -196,6 +200,8 @@ function setButton() {
       if (eval1[i].checked) {
         next_flag += 1;
       }
+    }
+    for (var i = 0; i < eval2.length; i++) {
       if (eval2[i].checked) {
         next_flag += 1;
       }
@@ -213,24 +219,28 @@ function setButton() {
 }
 
 function evaluation(k) {
-  for (var i = 0; i < eval1.length; i++) {
-    switch (k) {
-      case 1:
+  switch (k) {
+    case 1:
+      for (var i = 0; i < eval1.length; i++) {
         if (eval1[i].checked) {
           scores1[n] = i + 1;
         }
-        break;
-      case 2:
+      }
+      break;
+    case 2:
+      for (var i = 0; i < eval2.length; i++) {
         if (eval2[i].checked) {
           scores2[n] = i + 1;
         }
-        break;
-      case 3:
+      }
+      break;
+    case 3:
+      for (var i = 0; i < eval3.length; i++) {
         if (eval3[i].checked) {
           scores3[n] = i + 1;
         }
-        break;
-    }
+      }
+      break;
   }
   setButton();
 }

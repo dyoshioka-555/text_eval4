@@ -1,0 +1,7 @@
+# bin フォルダは要らない
+texts-old/
+
+#.txtはいらない
+*.txt
+*_copy.js
+*_copy.html

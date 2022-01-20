@@ -1,10 +1,10 @@
 import os
 import random
 
-root = "../texts/"
-METHOD = ["origin", "cvae", "cvae_bow"]
-N_SET = 4
-random.seed(1)
+root = "texts/"
+METHOD = ["origin", "cvae", "cvae_bow", "cvae_attn"]
+N_SET = 8
+random.seed(2)
 
 text_lists = {}
 for method in METHOD:
@@ -12,10 +12,16 @@ for method in METHOD:
         texts0 = []
         texts1 = []
         for sent in f.readlines():
-            if not int(sent.split("\t")[0]):
-                texts0.append(sent.split("\t")[1].strip().replace(" ", ""))
-            if int(sent.split("\t")[0]):
-                texts1.append(sent.split("\t")[1].strip().replace(" ", ""))
+            if method == "origin":
+                if not int(sent.split("\t")[0]):
+                    texts0.append(sent.split("\t")[1].strip().replace(" ", ""))
+                if int(sent.split("\t")[0]):
+                    texts1.append(sent.split("\t")[1].strip().replace(" ", ""))
+            else:
+                if int(sent.split("\t")[0]):
+                    texts0.append(sent.split("\t")[1].strip().replace(" ", ""))
+                if not int(sent.split("\t")[0]):
+                    texts1.append(sent.split("\t")[1].strip().replace(" ", ""))
     text_lists[method] = {0: texts0, 1: texts1}
 
 # print(len(text_lists["origin"][0]))
@@ -36,10 +42,10 @@ for n_set in range(N_SET):
     file_paths = []
     for method in METHOD:
         os.makedirs(f"texts/set{n_set + 1}", exist_ok=True)
-        texts = [text_lists[method][0][(n_set + 1) + 4 * i - 1] for i in range(25)]
+        texts = [text_lists[method][0][(n_set + 1) + N_SET * i - 1] for i in range(10)]
         # print(texts)
         texts.extend(
-            [text_lists[method][1][(n_set + 1) + 4 * i - 1] for i in range(25)]
+            [text_lists[method][1][(n_set + 1) + N_SET * i - 1] for i in range(10)]
         )
 
         with open(f"texts/set{n_set + 1}/{method}.list", mode="w") as f:

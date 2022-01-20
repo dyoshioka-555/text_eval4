@@ -15,16 +15,16 @@
     <h1>Text style transfer Evaluation Test</h1>
 
     実験に協力して頂き、ありがとうございます。<br>
-    本実験ではスタイル変換した日本語テキストについて、3項目を1～5点で評価して頂きます。<br>
+    本実験ではスタイル変換した日本語テキストについて、3項目を4点もしくは5点満点で評価して頂きます。<br>
     元テキストとモデルから生成された変換テキストの両方を読み、以下の評価を行ってください。<br>
     今回取り扱うスタイルは<b>「フィラー・言い淀みの有無」</b>です。<br>
     ここでの「フィラー・言い淀み」とは、発話の内容とは直接関係のない「あのー」や「えーと」のような間投詞や、<br>
-    発話の繰り返し、言い直しやつっかえなどを指します。<br>
-    実験の手順を説明します。
+    音韻の引き伸ばし、言い直しやつっかえなどを指します。<br>
+    実験の手順を説明します。よく読んでからお進みください。
 
     <h2>実験手順</h2>
     <ol>
-      <li>名前を入力し、1から4までのセット番号を選んで下さい。</li>
+      <li>名前を入力し、1から8までのセット番号を選んで下さい。</li>
       <li>"Start Experiment"を押して下さい。</li>
       <li>元テキストと生成テキストを読み、相応しいと思った評価を選択して下さい。<br>
         本評価実験では、生成されたテキストについて、<br>
@@ -40,9 +40,37 @@
       </li>
     </ol>
 
-    <h2>注意</h2>
+    <h2>フィラー・言い淀みの一例</h2>
     <ul>
-      <li>この実験は15～20分ほど要します。</li>
+      <h3>フィラー</h3>
+      「あの一」「そのー」「ま一」「ま」「えー」「え」「えと」「ん」「んと」など<br>
+      その言葉自体には意味が無い、間を詰めるためのつなぎ文句
+
+      <h3>音韻の引き伸ばし</h3>
+      「なんかー」「ですねー」など
+
+      <h3>言い間違い</h3>
+      「かうゆ通うように」「そわ備わってる」など
+
+      <h3>言いなおし・つっかえ</h3>
+      「み鏡で見んのも楽しい」「個じ個人で」など
+    </ul>
+
+    <h2>評価時の注意</h2>
+    <ul>
+      <li>テキストの自然性については、言い淀みを除いた部分について考えてください</li>
+      <ul>
+        例：「ああの僕はラーメンがす好きです」←フィラー・言い淀みはあるが日本語としては自然<br>
+        &nbsp;&ensp;&emsp;「僕は自動車を食べます」←日本語として不自然<br>
+        &nbsp;&ensp;&emsp;「僕はラーメンが好きですが好きですです」←言い淀みとしても不自然
+
+      </ul>
+    </ul>
+
+
+    <h2>その他注意</h2>
+    <ul>
+      <li>この実験は10分ほど要します。</li>
       <li>実験中はページの再読み込みは行わないで下さい（始めからになってしまいます）。</li>
       <li>スマートフォンでは結果をダウンロードできない場合があるのでPCを使用して下さい。</li>
     </ul>
@@ -60,6 +88,10 @@
       <label><input type="radio" name="set" id="number" value="2">2</label><br>
       <label><input type="radio" name="set" id="number" value="3">3</label><br>
       <label><input type="radio" name="set" id="number" value="4">4</label><br>
+      <label><input type="radio" name="set" id="number" value="5">5</label><br>
+      <label><input type="radio" name="set" id="number" value="6">6</label><br>
+      <label><input type="radio" name="set" id="number" value="7">7</label><br>
+      <label><input type="radio" name="set" id="number" value="8">8</label><br>
     <p>
       <button id="next1" onclick="start_experiment()">next</button>
     </p>
@@ -71,7 +103,7 @@
     <p id="page"></p>
     <p id="direction"></p>
     <p>
-    <table border="1">
+    <table class="a" border="1">
       <tr>
         <th>元テキスト</th>
         <td id="ori_text"></td>
@@ -84,25 +116,55 @@
     </table>
     </p>
     <p>
-    <table border="1">
+    <table class="b" border="1">
+
       <tr>
-        <th>↓</th>
+        <th rowspan="2">↓</th>
+        <th>完全に×</th>
+        <th>どちらかと言えば×</th>
+        <th>どちらかと言えば〇</th>
+        <th>完全に〇</th>
+        <th rowspan="2">↑</th>
+      </tr>
+
+      <tr>
         <th>1</th>
         <th>2</th>
         <th>3</th>
         <th>4</th>
-        <th>5</th>
-        <th>↑</th>
       </tr>
+
+
       <tr>
         <td>スタイル変換されていない</td>
         <td><label><input type="radio" name="eval1" onclick="evaluation(1)"></label></td>
         <td><label><input type="radio" name="eval1" onclick="evaluation(1)"></label></td>
         <td><label><input type="radio" name="eval1" onclick="evaluation(1)"></label></td>
         <td><label><input type="radio" name="eval1" onclick="evaluation(1)"></label></td>
-        <td><label><input type="radio" name="eval1" onclick="evaluation(1)"></label></td>
         <td>スタイル変換されている</td>
       </tr>
+    </table>
+
+    <p></p>
+
+    <table class="c" border="1">
+      <tr>
+        <th rowspan="2">↓</th>
+        <th>完全に×</th>
+        <th>どちらかと言えば×</th>
+        <th>許容できる</th>
+        <th>どちらかと言えば〇</th>
+        <th>完全に〇</th>
+        <th rowspan="2">↑</th>
+      </tr>
+      <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+      </tr>
+
       <tr>
         <td>コンテンツが保存されていない</td>
         <td><label><input type="radio" name="eval2" onclick="evaluation(2)"></label></td>

@@ -2,7 +2,7 @@ import os
 import random
 
 root = "texts/"
-METHOD = ["origin", "cvae", "cvae_bow", "cvae_attn"]
+METHOD = ["origin", "CWS-Attn", "CWS-Attn+PE"]
 N_SET = 5
 random.seed(0)
 

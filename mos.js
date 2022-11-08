@@ -45,12 +45,12 @@ function start_experiment() {
   var origin_list = text_dir + "set" + set_num + "/origin.list";
   var method1_list = text_dir + "set" + set_num + "/CWS-Attn.list";
   var method2_list = text_dir + "set" + set_num + "/CWS-Attn+PE.list";
-  //var method3_list = text_dir + "set" + set_num + "/cvae.list";
+  var method3_list = text_dir + "set" + set_num + "/Cycle.list";
   //var method4_list = text_dir + "set" + set_num + "/cvae_bow2.list";
   origin = loadText(origin_list);
   method1 = loadText(method1_list);
   method2 = loadText(method2_list);
-  //method3 = loadText(method3_list);
+  method3 = loadText(method3_list);
   //method4 = loadText(method4_list);
   outfile = name + "_set" + set_num + ".csv";
   text_list = makeTextList();
@@ -86,16 +86,16 @@ function loadText(filename) {
 function makeTextList() {
   var m1_texts = [];
   var m2_texts = [];
-  //var m3_texts = [];
+  var m3_texts = [];
   for (i = 0; i < origin.length; i++) {
     if (i < 10) {
       m1_texts.push({ "id": i, "direction": 0, "method": "cvae+attn", "ori_text": origin[i], "tra_text": method1[i] });
-      m2_texts.push({ "id": i, "direction": 0, "method": "cvae+bow", "ori_text": origin[i], "tra_text": method2[i] });
-      //m3_texts.push({ "id": i, "direction": 0, "method": "cvae", "ori_text": origin[i], "tra_text": method3[i] });
+      m2_texts.push({ "id": i, "direction": 0, "method": "cvae+attn+pe", "ori_text": origin[i], "tra_text": method2[i] });
+      m3_texts.push({ "id": i, "direction": 0, "method": "cyclecvae", "ori_text": origin[i], "tra_text": method3[i] });
     } else {
       m1_texts.push({ "id": i, "direction": 1, "method": "cvae+attn", "ori_text": origin[i], "tra_text": method1[i] });
-      m2_texts.push({ "id": i, "direction": 1, "method": "cvae+bow", "ori_text": origin[i], "tra_text": method2[i] });
-      //m3_texts.push({ "id": i, "direction": 1, "method": "cvae", "ori_text": origin[i], "tra_text": method3[i] });
+      m2_texts.push({ "id": i, "direction": 1, "method": "cvae+attn+pe", "ori_text": origin[i], "tra_text": method2[i] });
+      m3_texts.push({ "id": i, "direction": 1, "method": "cyclecvae", "ori_text": origin[i], "tra_text": method3[i] });
     }
   }
 
@@ -103,7 +103,7 @@ function makeTextList() {
 
   var texts = [];
   t = m1_texts.concat(m2_texts);
-  //texts = t.concat(m3_texts);//, method4
+  texts = t.concat(m3_texts);//, method4
   texts.shuffle();
   return texts;
 }
@@ -304,7 +304,7 @@ document.onkeypress = invalid_enter();
 var origin;
 var method1;
 var method2;
-//var method3;
+var method3;
 //var method4;
 var outfile;
 var text_list;

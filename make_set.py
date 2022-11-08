@@ -2,9 +2,9 @@ import os
 import random
 
 root = "texts/"
-METHOD = ["origin", "CWS-Attn", "CWS-Attn+PE"]
+METHOD = ["origin", "CWS-Attn", "CWS-Attn+PE", "Cycle"]
 N_SET = 5
-random.seed(0)
+random.seed(4)
 
 text_lists = {}
 for method in METHOD:
